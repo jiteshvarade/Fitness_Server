@@ -94,55 +94,37 @@ router.post("/trainer",async (req,res)=>{
     }
 })
 
-router.post("/login", async (req,res)=>{
-    const{email, passwd} = req.body
-    console.log("Recived Data : ",{email, passwd})
+router.post("/login", async (req, res) => {
+  const { email, passwd } = req.body;
+  const normalizedEmail = email.trim().toLowerCase(); 
 
-    let db = await GetConnection()
-    let collection_user = db.collection("User")
-    let collection_trainer = db.collection("Trainer")
-    const user = await collection_user.findOne({email})
-    const trainer = await collection_trainer.findOne({email})
-    if(user)
-    {
-        const passwordMatch = await bcrypt.compare(passwd, user.hash)
+  try {
+    let db = await GetConnection();
+    let collection_user = db.collection("User");
+    let collection_trainer = db.collection("Trainer");
 
-        if(passwordMatch)
-        {
-            console.log("User authenticated successfully")
-            const payload = {userId : user.email}
-            const token = jwt.sign(payload, process.env.TOKEN, {expiresIn : "23h"})
-            res.json({message : "Login successfully", token})
-        }
-        else
-        {
-            console.log("Invalid password")
-            return res.status(401).json({message : "Invalid password"})
-        }
-    }
-    else if(trainer)
-    {
-        const passwordMatch = await bcrypt.compare(passwd, trainer.hash)
+    const user = await collection_user.findOne({ email: normalizedEmail });
+    const trainer = await collection_trainer.findOne({ email: normalizedEmail });
 
-        if(passwordMatch)
-        {
-            console.log("Trainer authenticated successfully")
-            const payload = {trainerId : trainer.email}
-            const token = jwt.sign(payload, process.env.TOKEN, {expiresIn : "23h"})
-            res.json({message : "Login successfully", token})
-        }
-        else
-        {
-            console.log("Invalid password")
-            return res.status(401).json({message : "Invalid password"})
-        }
+    const account = user || trainer;
+
+    if (account) {
+      const passwordMatch = await bcrypt.compare(passwd, account.hash);
+      if (passwordMatch) {
+        const payload = { id: account.email };
+        const token = jwt.sign(payload, process.env.TOKEN, { expiresIn: "23h" });
+        res.json({ message: "Login successfully", token });
+      } else {
+        return res.status(401).send({ message: "Invalid password" });
+      }
+    } else {
+      return res.status(404).send({ message: "Email not found" });
     }
-    else
-    {
-        console.log("Invalid Username")
-        res.status(401).json({message : "Invalid Username"});
-    }
-})
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: "Error processing login" });
+  }
+});
 
 router.post("/forgotpassword", (req,res)=>{
     const {email} = req.body
