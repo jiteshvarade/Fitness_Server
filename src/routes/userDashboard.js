@@ -209,7 +209,7 @@ router.post("/editmeal",async (req,res)=>{
         const user = await collection.findOne({ email })
     
         if (!user) {
-            const newUser = await collection.insertOne({email, data})
+            const newUser = await collection.insertOne({email, Meal:data})
             console.log("Data uploaded successfully")
             res.send("Data uploaded successfully")
         }
@@ -248,7 +248,7 @@ router.post("/editgoals",async (req,res)=>{
         const user = await collection.findOne({ email })
     
         if (!user) {
-            const newUser = await collection.insertOne({email, data})
+            const newUser = await collection.insertOne({email,Goals: data})
             console.log("Data uploaded successfully")
             res.send("Data uploaded successfully")
         }
@@ -287,7 +287,7 @@ router.post("/editachievements",async (req,res)=>{
         const user = await collection.findOne({ email })
     
         if (!user) {
-            const newUser = await collection.insertOne({email, data})
+            const newUser = await collection.insertOne({email, Achivements:data})
             console.log("Data uploaded successfully")
             res.send("Data uploaded successfully")
         }
@@ -326,7 +326,7 @@ router.post("/editfoodpreference",async (req,res)=>{
         const user = await collection.findOne({ email })
     
         if (!user) {
-            const newUser = await collection.insertOne({email, data})
+            const newUser = await collection.insertOne({email, Food_Preference : data})
             console.log("Data uploaded successfully")
             res.send("Data uploaded successfully")
         }
@@ -365,7 +365,7 @@ router.post("/editprofileinfo",async (req,res)=>{
         const user = await collection.findOne({ email })
     
         if (!user) {
-            const newUser = await collection.insertOne({email, data})
+            const newUser = await collection.insertOne({email, Profile_Info : data})
             console.log("Data uploaded successfully")
             res.send("Data uploaded successfully")
         }
@@ -404,7 +404,7 @@ router.post("/editMentorName",async (req,res)=>{
         const user = await collection.findOne({ email })
     
         if (!user) {
-            const newUser = await collection.insertOne({email, data})
+            const newUser = await collection.insertOne({email, Mentor:data})
             console.log("Data uploaded successfully")
             res.send("Data uploaded successfully")
         }
@@ -443,7 +443,7 @@ router.post("/editStreak",async (req,res)=>{
         const user = await collection.findOne({ email })
     
         if (!user) {
-            const newUser = await collection.insertOne({email, data})
+            const newUser = await collection.insertOne({email, Streak:data})
             console.log("Data uploaded successfully")
             res.send("Data uploaded successfully")
         }
