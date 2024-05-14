@@ -41,7 +41,7 @@ router.post("/add",async (req,res)=>{
 })
 
 router.post("/remove", async (req, res) => {
-    const { email, removeproduct } = req.body
+    const { email, product } = req.body
     try {
         const db = await GetConnectionCartInfo()
         const collection = db.collection("info")
@@ -55,7 +55,7 @@ router.post("/remove", async (req, res) => {
 
         const { modifiedCount } = await collection.updateOne(
             { email },
-            { $pull: { products: { _id: removeproduct._id } } } // Use strict object comparison
+            { $pull: { products: { _id: product._id } } } // Use strict object comparison
         )
 
         if (modifiedCount === 1) {
