@@ -3,13 +3,13 @@ const router = express.Router()
 const GetConnectionFitnessCart = require("../db/FitnessConnection")
 
 router.post("/",async (req,res)=>{
-    const{search, max, min, maxPrice, minPrice, pageNo} = req.body
+    const{search, max, min, maxPrice, pageNo} = req.body
     console.log(req.body)
     // const{search, max, min, maxPrice, minPrice, pageNo} = {search : "jumprope",max : false, min : false, maxPrice : 0, minPrice : 0, pageNo : 1}
     skipPages = (pageNo - 1) * 12
     let data = []
 
-    if(search == "null")
+    if(search == "")
     {
         search = "cart"
     }
