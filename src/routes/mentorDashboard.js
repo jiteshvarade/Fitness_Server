@@ -42,8 +42,8 @@ router.post("/getStudents",async (req,res)=>{
 
         if(!user)
         {
-            console.log("User have no data till now")
-            res.send("User have no data till now")
+            console.log("Mentor have no data till now")
+            res.send("Mentor have no data till now")
         }
         else
         {
@@ -54,7 +54,7 @@ router.post("/getStudents",async (req,res)=>{
     catch(error)
     {
         console.log(error)
-        res.status(500).send({message : "Error reciving user info"})
+        res.status(500).send({message : "Error reciving Mentor info"})
     }
 })
 
@@ -70,8 +70,8 @@ router.post("/getProfileInfo",async (req,res)=>{
 
         if(!user)
         {
-            console.log("User have no data till now")
-            res.send("User have no data till now")
+            console.log("Mentor have no data till now")
+            res.send("Mentor have no data till now")
         }
         else
         {
@@ -82,7 +82,7 @@ router.post("/getProfileInfo",async (req,res)=>{
     catch(error)
     {
         console.log(error)
-        res.status(500).send({message : "Error reciving user info"})
+        res.status(500).send({message : "Error reciving Mentor info"})
     }
 })
 
@@ -98,8 +98,8 @@ router.post("/getLessons",async (req,res)=>{
 
         if(!user)
         {
-            console.log("User have no data till now")
-            res.send("User have no data till now")
+            console.log("Mentor have no data till now")
+            res.send("Mentor have no data till now")
         }
         else
         {
@@ -110,7 +110,7 @@ router.post("/getLessons",async (req,res)=>{
     catch(error)
     {
         console.log(error)
-        res.status(500).send({message : "Error reciving user info"})
+        res.status(500).send({message : "Error reciving Mentor info"})
     }
 })
 
@@ -126,8 +126,8 @@ router.post("/getTasks",async (req,res)=>{
 
         if(!user)
         {
-            console.log("User have no data till now")
-            res.send("User have no data till now")
+            console.log("Mentor have no data till now")
+            res.send("Mentor have no data till now")
         }
         else
         {
@@ -138,7 +138,7 @@ router.post("/getTasks",async (req,res)=>{
     catch(error)
     {
         console.log(error)
-        res.status(500).send({message : "Error reciving user info"})
+        res.status(500).send({message : "Error reciving Mentor info"})
     }
 })
 
