@@ -142,7 +142,6 @@ router.post("/buynow",(req,res)=>{
     {
         console.log("Recived mail : ",email) 
         buynow(email, product)
-        // logic to store user data inside databse for order details
         res.send(product)
     }
     catch(error)
