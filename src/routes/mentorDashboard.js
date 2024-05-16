@@ -76,12 +76,12 @@ router.post("/getprofileinfo",async (req,res)=>{
         if(!user)
         {
             console.log("Mentor have no data till now")
-            res.send(user_info.trainer)
+            res.send(user_info.username)
         }
         else
         {
             console.log(user.Profile_Info,user_info.trainer)
-            res.send({data : user.Profile_Info,username : user_info.trainer})
+            res.send({data : user.Profile_Info,username : user_info.username})
         }
     }
     catch(error)
