@@ -80,7 +80,7 @@ router.post("/getprofileinfo",async (req,res)=>{
         }
         else
         {
-            console.log(user.Profile_Info,user_info.trainer)
+            console.log(user.Profile_Info,user_info.username)
             res.send({data : user.Profile_Info,username : user_info.username})
         }
     }
